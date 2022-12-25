@@ -15,6 +15,7 @@ In summary, RV32I is the base integer instruction set for RISC-V, while RV32M is
 In the context of RISC-V, sign-extending is often used to extend the range of a signed immediate value that is used in an instruction. For example, if an instruction has a 12-bit signed immediate field, sign-extending it would allow it to represent a wider range of values. Sign-extending is also often used when loading values from memory into registers, as it allows the value to be sign-extended to the full width of the register.
 
 ## Instructions for RV32I
+### BGE
 ```
 bge rs1, rs2, offset
 ```
@@ -23,3 +24,26 @@ Take the branch if registers rs1 is greater than or equal to rs2, using signed c
 if (x[rs1] >=s x[rs2]) pc += sext(offset)
 ```
 Here `>=s` means signed comparison, `>=u` refer to unsigned comparison.
+
+### LA & LW
+The la (load address) instruction is useful for loading the address of a memory location into a register, which can then be used to access the contents of that memory location using load or store instructions. It is often used in combination with the lw (load word) instruction to load a word from memory into a register.
+
+For example, to load a word from memory into the t0 register using the address stored in t1, you could use the following instructions:
+
+```
+la t0, label
+lw t0, 0(t0)
+```
+
+### LW & SW
+lw (load word): from memory to register  
+sw (store word): from register to memory
+
+### ABI
+In the RISC-V instruction set, the ABI (Application Binary Interface) name of a register is the name used to refer to the register in a specific calling convention. A calling convention is a set of rules that define how function calls and returns are made in a program, including which registers are used to pass arguments and return values.
+
+### Calling Convention
+`ra`: return address, which is `x1`.
+
+`a0` ~ `a7`: argument registers, which is `x10` ~ `x17`.
+

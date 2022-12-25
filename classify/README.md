@@ -45,3 +45,23 @@ Open https://venus.cs61c.org in the browser, run `mount local prj`, then go back
 >> cd unittests
 >> make test-abs
 ```
+
+## Notes
+### Abosolute Value
+```
+abs:
+    # Return if non-negative
+    bge a0, zero, done
+
+    # Negate a0 if negative
+    sub a0, x0, a0
+
+done:
+    ret
+```
+
+### Array
+We can use two registers to represent an array, the first register a0 stores the address of the start of the array, the second register a1 stores the number of integers in the array.
+
+### ReLU
+The ReLU function takes in an integer array and sets every negative value in the array to 0. Positive values in the array are unchanged. In other words, for each element x in the array, ReLU computes max(x, 0).

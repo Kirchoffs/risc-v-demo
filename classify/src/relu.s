@@ -13,8 +13,7 @@
 #   this function terminates the program with error code 57
 # ==============================================================================
 relu:
-    # Prologue
-
+    
 
 loop_start:
 
