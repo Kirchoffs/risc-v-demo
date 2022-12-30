@@ -47,3 +47,17 @@ In the RISC-V instruction set, the ABI (Application Binary Interface) name of a 
 
 `a0` ~ `a7`: argument registers, which is `x10` ~ `x17`.
 
+## Registers
+t0 ~ t2: x5 ~ x7  
+t3 ~ t6: x28 ~ x31
+
+## Code Snippet
+### if else
+```
+beq t0, t1, true
+# Execute code for else
+j end
+true:
+# Execute code for if
+end:
+```

@@ -65,3 +65,7 @@ We can use two registers to represent an array, the first register a0 stores the
 
 ### ReLU
 The ReLU function takes in an integer array and sets every negative value in the array to 0. Positive values in the array are unchanged. In other words, for each element x in the array, ReLU computes max(x, 0).
+
+### Argmax
+The argmax function takes in an integer array and returns the index of the largest element in the array. If multiple elements are tied as the largest element, return the smallest index.
+

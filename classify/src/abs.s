@@ -9,6 +9,10 @@
 #	a0 (int) the absolute value of the input
 # =================================================================
 abs:
+	# prologue
+    addi sp, sp, -4
+    sw ra, 0(sp)
+
 	# Return if non-negative
 	bge a0, zero, done
 
@@ -16,4 +20,8 @@ abs:
 	sub a0, x0, a0
 
 done:
+    # Epilogue
+    lw ra, 0(sp)
+    addi sp, sp, 4
+	
 	ret
