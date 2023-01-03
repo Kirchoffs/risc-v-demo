@@ -69,3 +69,17 @@ The ReLU function takes in an integer array and sets every negative value in the
 ### Argmax
 The argmax function takes in an integer array and returns the index of the largest element in the array. If multiple elements are tied as the largest element, return the smallest index.
 
+### Dot Product
+The dot product function takes in two integer arrays, multiplies the corresponding entries of the arrays together, and returns the sum of all the products.  
+- Array Strides  
+Instead of iterating through every element of the array, what if we want to iterate through every other element, or every third element? To do this, we will define the stride of an array.
+
+### Matrix Multiplication
+#### Storing Matrices
+We have row-major orders and col-major orders.  
+Row-major order means we each row of the matrix consecutively in memory as a 1-dimensional integer array.
+
+#### Matrix Multiplication
+The matrix multiplication function takes in two integer matrices A (dimension n × m) and B (dimension m × k) and outputs an integer matrix C (dimension n × k).
+
+To calculate the entry at row i, column j of C, take the dot product of the ith row of A and the jth column of B. Note that this can be done by calling the dot function with the proper strides.

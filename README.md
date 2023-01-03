@@ -23,7 +23,9 @@ Take the branch if registers rs1 is greater than or equal to rs2, using signed c
 ```
 if (x[rs1] >=s x[rs2]) pc += sext(offset)
 ```
-Here `>=s` means signed comparison, `>=u` refer to unsigned comparison.
+Here `>=s` means signed comparison, `>=u` refer to unsigned comparison.  
+
+Similarly, there are beq, bne, bge, blt, bgeu, bltu.
 
 ### LA & LW
 The la (load address) instruction is useful for loading the address of a memory location into a register, which can then be used to access the contents of that memory location using load or store instructions. It is often used in combination with the lw (load word) instruction to load a word from memory into a register.
