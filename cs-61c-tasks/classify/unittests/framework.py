@@ -331,7 +331,7 @@ class AssemblyTest:
             defines = []
         else:
             ret = 0 if fail == 'malloc' else -1
-            defines = ["--def", f"#{fail.upper()}_RETURN_HOOK=li a0 {ret}"]
+            defines = ["--def", f"#_{fail.upper()}_RETURN_HOOK=li a0 {ret}"]
 
         # check arguments
         if args is not None:

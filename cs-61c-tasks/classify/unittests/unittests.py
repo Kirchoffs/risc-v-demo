@@ -85,7 +85,7 @@ class TestRelu(TestCase):
         # call the `relu` function
         t.call("relu")
         # generate the `assembly/TestRelu_test_invalid_n.s` file and run it through venus
-        t.execute(code=57)
+        t.execute(code = 57)
 
 
 class TestArgmax(TestCase):
@@ -126,7 +126,7 @@ class TestArgmax(TestCase):
         # call the `argmax` function
         t.call("argmax")
         # generate the `assembly/TestArgmax_test_invalid_n.s` file and run it through venus
-        t.execute(code=57)
+        t.execute(code = 57)
 
 
 class TestDot(TestCase):
@@ -423,7 +423,7 @@ class TestWriteMatrix(TestCase):
         # call `write_matrix` function
         t.call("write_matrix")
         # generate assembly and run it through venus
-        t.execute(fail=fail, code=code)
+        t.execute(fail = fail, code = code)
         # compare the output file against the reference
         if code == 0:
             t.check_file_output(outfile, "outputs/test_write_matrix/reference.bin")
@@ -432,13 +432,13 @@ class TestWriteMatrix(TestCase):
         self.doWriteMatrix()
 
     def test_fail_fopen(self):
-        self.doWriteMatrix(fail='fopen', code=89)
+        self.doWriteMatrix(fail = 'fopen', code = 89)
 
     def test_fail_fwrite(self):
-        self.doWriteMatrix(fail='fwrite', code=92)
+        self.doWriteMatrix(fail = 'fwrite', code = 92)
 
     def test_fail_fclose(self):
-        self.doWriteMatrix(fail='fclose', code=90)
+        self.doWriteMatrix(fail = 'fclose', code = 90)
 
 
 class TestClassify(TestCase):
@@ -453,7 +453,7 @@ class TestClassify(TestCase):
         t.include("write_matrix.s")
         return t
 
-    def run_classify(self, input_dir, input, output_id, msg: str = "", fail='', code=0):
+    def run_classify(self, input_dir, input, output_id, msg: str = "", fail = '', code = 0):
         t = self.make_test()
         output_dir = "outputs/test_basic_main"
         outfile = f"{output_dir}/student{output_id}.bin"
@@ -461,7 +461,7 @@ class TestClassify(TestCase):
         silent = len(msg) == 0
         t.input_scalar("a2", 1 if silent else 0)
         t.call("classify")
-        t.execute(fail=fail, code=code, args=args)
+        t.execute(fail = fail, code = code, args = args)
         if code == 0:
             t.check_file_output(outfile, f"{output_dir}/reference{output_id}.bin")
             t.check_stdout(msg)
@@ -479,7 +479,7 @@ class TestClassify(TestCase):
     def test_wrong_number_of_args(self):
         t = self.make_test()
         t.call("classify")
-        t.execute(code=72, args=[""])
+        t.execute(code = 72, args = [""])
 
 # The following are some simple sanity checks:
 import subprocess, pathlib, os

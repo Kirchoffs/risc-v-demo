@@ -54,3 +54,15 @@ test-classify:
 
 test-main:
 	${PYTHON} -m unittest unittests.TestMain -v
+
+test-initialize_zero:
+	${PYTHON} -m unittest studenttests.TestInitializeZero -v
+
+test-zero_one_loss:
+	${PYTHON} -m unittest studenttests.TestZeroOneLoss -v
+
+test-abs_loss:
+	${PYTHON} -m unittest studenttests.TestAbsLoss -v
+
+test-squared_loss:
+	${PYTHON} -m unittest studenttests.TestSquaredLoss -v

@@ -262,7 +262,7 @@ malloc:
     li a0 0x3CC
     addi a6 x0 1
     ecall
-    #MALLOC_RETURN_HOOK
+    #_MALLOC_RETURN_HOOK
     ret
 
 

@@ -83,3 +83,8 @@ Row-major order means we each row of the matrix consecutively in memory as a 1-d
 The matrix multiplication function takes in two integer matrices A (dimension n × m) and B (dimension m × k) and outputs an integer matrix C (dimension n × k).
 
 To calculate the entry at row i, column j of C, take the dot product of the ith row of A and the jth column of B. Note that this can be done by calling the dot function with the proper strides.
+
+### Loss Functions
+The absolute loss function computes and outputs the absolute difference between each pair of corresponding entries, and then outputs the sum of all the absolute differences.  
+The squared loss function computes and outputs the square of the difference between each pair of corresponding entries, and then outputs the sum of all the squared differences.  
+The zero-one loss function computes whether each pair of corresponding entries is equal, and does not output any sum.
