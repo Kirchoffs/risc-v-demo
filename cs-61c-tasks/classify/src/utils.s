@@ -135,7 +135,7 @@ print_char:
 fopen:
     li a0 c_openFile
     ecall
-    #FOPEN_RETURN_HOOK
+    #_FOPEN_RETURN_HOOK
     ret
 
 
@@ -152,7 +152,7 @@ fopen:
 fread:
     li a0 c_readFile
     ecall
-    #FREAD_RETURN_HOOK
+    #_FREAD_RETURN_HOOK
     ret
 
 
@@ -171,7 +171,7 @@ fread:
 fwrite:
     li a0 c_writeFile
     ecall
-    #FWRITE_RETURN_HOOK
+    #_FWRITE_RETURN_HOOK
     ret
 
 
@@ -186,7 +186,7 @@ fwrite:
 fclose:
     li a0 c_closeFile
     ecall
-    #FCLOSE_RETURN_HOOK
+    #_FCLOSE_RETURN_HOOK
     ret
 
 

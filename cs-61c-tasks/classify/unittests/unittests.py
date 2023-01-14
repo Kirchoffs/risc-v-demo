@@ -345,8 +345,9 @@ class TestMatmul(TestCase):
 
 class TestReadMatrix(TestCase):
 
-    def doReadMatrix(self, input_file = "inputs/test_read_matrix/test_input.bin",
-     result_row = 3, result_col = 3, result_array = [1, 2, 3, 4, 5, 6, 7, 8, 9], fail='', code=0):
+    def doReadMatrix(
+        self, input_file = "inputs/test_read_matrix/test_input.bin", result_row = 3, result_col = 3, 
+        result_array = [1, 2, 3, 4, 5, 6, 7, 8, 9], fail = '', code = 0):
         t = AssemblyTest(self, "read_matrix.s")
         # load address to the name of the input file into register a0
         t.input_read_filename("a0", input_file)
@@ -368,7 +369,7 @@ class TestReadMatrix(TestCase):
         t.check_array_pointer("a0", result_array)
 
         # generate assembly and run it through venus
-        t.execute(fail=fail, code=code)
+        t.execute(fail = fail, code = code)
 
     def test_simple_read(self):
         self.doReadMatrix()
@@ -397,21 +398,21 @@ class TestReadMatrix(TestCase):
                         0, 2, -5, 0, 9, -1, 14, 3, 3, -1, 0, 7, 5, 14, 13])
 
     def test_fail_fopen(self):
-        self.doReadMatrix(fail='fopen', code=89)
+        self.doReadMatrix(fail = 'fopen', code = 89)
 
     def test_fail_fread(self):
-        self.doReadMatrix(fail='fread', code=91)
+        self.doReadMatrix(fail = 'fread', code = 91)
 
     def test_fail_fclose(self):
-        self.doReadMatrix(fail='fclose', code=90)
+        self.doReadMatrix(fail = 'fclose', code = 90)
 
     def test_fail_malloc(self):
-        self.doReadMatrix(fail='malloc', code=88)
+        self.doReadMatrix(fail = 'malloc', code = 88)
 
 
 class TestWriteMatrix(TestCase):
 
-    def doWriteMatrix(self, fail='', code=0):
+    def doWriteMatrix(self, fail = '', code = 0):
         t = AssemblyTest(self, "write_matrix.s")
         outfile = "outputs/test_write_matrix/student.bin"
         # load output file name into a0 register

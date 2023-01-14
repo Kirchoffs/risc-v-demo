@@ -25,7 +25,7 @@ if (x[rs1] >=s x[rs2]) pc += sext(offset)
 ```
 Here `>=s` means signed comparison, `>=u` refer to unsigned comparison.  
 
-Similarly, there are beq, bne, bge, blt, bgeu, bltu.
+Similarly, there are beq, beqz, bne, bge, blt, bgeu, bltu.
 
 ### LA & LW
 The la (load address) instruction is useful for loading the address of a memory location into a register, which can then be used to access the contents of that memory location using load or store instructions. It is often used in combination with the lw (load word) instruction to load a word from memory into a register.
@@ -41,17 +41,24 @@ lw t0, 0(t0)
 lw (load word): from memory to register  
 sw (store word): from register to memory
 
-### ABI
+## ABI
 In the RISC-V instruction set, the ABI (Application Binary Interface) name of a register is the name used to refer to the register in a specific calling convention. A calling convention is a set of rules that define how function calls and returns are made in a program, including which registers are used to pass arguments and return values.
 
-### Calling Convention
-`ra`: return address, which is `x1`.
+## Calling Convention
+Callee may change the value:  
+`ra`: return address, which is `x1`.  
+`a0` ~ `a7`: argument registers, which is `x10` ~ `x17`.  
+`t0` ~ `t6`
 
-`a0` ~ `a7`: argument registers, which is `x10` ~ `x17`.
+Callee will keep the value:  
+`sp`  
+`s0` ~ `s11`
 
 ## Registers
 t0 ~ t2: x5 ~ x7  
-t3 ~ t6: x28 ~ x31
+t3 ~ t6: x28 ~ x31  
+s0 ~ s1: x8 ~ x9  
+s2 ~ s11: x18 ~ x27
 
 ## Code Snippet
 ### if else
