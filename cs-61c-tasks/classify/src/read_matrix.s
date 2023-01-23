@@ -39,8 +39,8 @@ read_matrix:
     sw s8, 0(sp)
 
     mv s0, a0
-    mv s1, a1 # pointer to an integer which contains row
-    mv s2, a2 # pointer to an integer which contains col
+    mv s1, a1              # pointer to an integer which contains row
+    mv s2, a2              # pointer to an integer which contains col
 
     # open file
     mv a1, s0              # filepath
@@ -79,7 +79,7 @@ read_matrix:
     jal fread
     bne a0, s4, exp_fread
 
-    mv s8, s0 # s8 is the pointer to the following address
+    mv s8, s0              # s8 is the pointer to the following address
 
     mv a1, s3
     jal fclose

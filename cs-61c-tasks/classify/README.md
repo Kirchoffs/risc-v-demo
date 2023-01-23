@@ -88,3 +88,10 @@ To calculate the entry at row i, column j of C, take the dot product of the ith 
 The absolute loss function computes and outputs the absolute difference between each pair of corresponding entries, and then outputs the sum of all the absolute differences.  
 The squared loss function computes and outputs the square of the difference between each pair of corresponding entries, and then outputs the sum of all the squared differences.  
 The zero-one loss function computes whether each pair of corresponding entries is equal, and does not output any sum.
+
+### Classify
+- Read three matrices `m0`, `m1`, and `input` from files. The filepaths are provided as an argument.  
+- Compute `h = matmul(m0, input)`.  
+- Compute `h = relu(h)`.  
+- Compute `o = matmul(m1, h)` and write the resulting -matrix to the output file. The output filepath is provided as an argument.  
+- Compute and return `argmax(o)`

@@ -30,6 +30,8 @@ def run_raw_venus(check_calling_convention: bool = True, extra_flags: Optional[L
     cmd = [str(arg) for arg in cmd]
     if verbose: print("Executing: " + " ".join(cmd))
     # print(" ".join((str(c) for c in cmd)))
+    # print('>>>>>>')
+    # print(cmd)
     r = subprocess.run(cmd, cwd=_root_dir, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     return r
 

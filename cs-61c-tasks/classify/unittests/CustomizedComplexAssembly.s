@@ -1,6 +1,32 @@
-.globl classify
+.import ../src/utils.s
+.import ../src/read_matrix.s
+.import ../src/write_matrix.s
+.import ../src/matmul.s
+.import ../src/relu.s
+.import ../src/argmax.s
+.import ../src/dot.s
+
+.data
+program: .asciiz "main.s"
+m0: .asciiz "/Users/yonghaoshu/Documents/projects/risc-v-demo/cs-61c-tasks/classify/inputs/larger0/bin/m0.bin"
+m1: .asciiz "/Users/yonghaoshu/Documents/projects/risc-v-demo/cs-61c-tasks/classify/inputs/larger0/bin/m1.bin"
+input: .asciiz "/Users/yonghaoshu/Documents/projects/risc-v-demo/cs-61c-tasks/classify/inputs/larger0/bin/inputs/input0.bin"
+output: .asciiz "/Users/yonghaoshu/Documents/projects/risc-v-demo/cs-61c-tasks/classify/outputs/test_basic_main/reference0.bin"
+args: .word program, m0, m1, input, output
+
+# m0: 3x3
+# m1: 3x3
+# input: 3x1
+
+# m0 * input => 3x1
+# ReLU(m0 * input) => 3x1
+# m1 * ReLU(m0 * input) => 3x1
 
 .text
+li a0, 5
+la a1, args
+li a2, 0
+
 classify:
     # =====================================
     # COMMAND LINE ARGUMENTS
@@ -142,8 +168,6 @@ classify:
     # 1. LINEAR LAYER:    m0 * input
     # 2. NONLINEAR LAYER: ReLU(m0 * input)
     # 3. LINEAR LAYER:    m1 * ReLU(m0 * input)
-    
-    ## 1. LINEAR LAYER:    m0 * input
     mv a0, s1
     mul a0, a0, s8
     slli a0, a0, 2
@@ -161,7 +185,6 @@ classify:
     mv a6, s10 
     jal matmul
 
-    ## 2. NONLINEAR LAYER: ReLU(m0 * input)
     mv t0, s1
     mul t0, t0, s8
     mv a0, s10
@@ -169,7 +192,6 @@ classify:
     jal relu    ### s10 for m0 * input
                 ### s1 for row, s8 for col
 
-    ## 3. LINEAR LAYER:    m1 * ReLU(m0 * input)
     mv a0, s3   # free s3
     jal free
 
@@ -209,11 +231,9 @@ classify:
     mv a1, s4
     mul a1, a1, s8
     jal argmax
-    mv s0, a0
 
-    bne s11, x0, free_memory
-    # Print classification
     mv a1, a0
+    mv s0, a0
     jal print_int
 
     # Print newline afterwards for clarity
@@ -249,7 +269,8 @@ free_memory:
     lw s10, 44(sp)
     lw s11, 48(sp)
     addi sp, sp, 52
-    ret
+
+    jal exit
 
 exp_args:
     li a1, 72

@@ -279,6 +279,13 @@ class TestMatmul(TestCase):
             [30, 36, 42, 66, 81, 96, 102, 126, 150]
         )
 
+    def test_standard_more(self):
+        self.doMatmul(
+            [2, 1, 2, 4, -2, 5], 2, 3,
+            [2, 1, 1, 2, 3, 2, 1, 5, 4, 1, 1, 3], 3, 4,
+            [15, 6, 5, 15, 22, 5, 7, 13]
+        )
+
     def test_length_1(self):
         self.doMatmul(
             [4], 1, 1,

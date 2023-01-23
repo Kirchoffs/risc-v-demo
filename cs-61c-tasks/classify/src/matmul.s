@@ -44,15 +44,15 @@ matmul:
     sw s7, 4(sp)    # the pointer to the start of m1
     sw s8, 0(sp)    # the pointer to the start of d
 
-    mv s3, a1
-    mv s4, a5
-    mv s5, a2
-    mv s6, a0
-    mv s7, a3
-    mv s8, a6
+    mv s3, a1       # row of m0
+    mv s4, a5       # col of m1
+    mv s5, a2       # col of m0
+    mv s6, a0       # pointer to m0
+    mv s7, a3       # pointer to m1
+    mv s8, a6       # pointer to d
 
     mv s0, x0
-    ebreak        
+
 outer_loop_start:
     mv s1, x0        
 
@@ -66,13 +66,13 @@ inner_loop_continue:
     bge s2, s4, inner_loop_end
 
 loop_content:
-    mul a0, s1, s4
+    mul a0, s1, s5 # s1: row index for outer loop; s5: number of cols for m0
     slli a0, a0, 2
     add a0, a0, s6
 
-    mv a1, s2
+    mv a1, s2      # s2: col index for inner loop
     slli a1, a1, 2
-    add a1, a1, s7
+    add a1, a1, s7 # s7: the pointer to the start of m1
 
     mv a2, s5
 
